@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9123c0ef7027e484d81296e36dfb932c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Meshes/Materials/window01_1_EMI.mat
+  uploadId: 431881

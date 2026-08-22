@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 54ef5b2d773f23644a2f5a658f78d080
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Prefabs/hotel_elevator_set.prefab
+  uploadId: 431881

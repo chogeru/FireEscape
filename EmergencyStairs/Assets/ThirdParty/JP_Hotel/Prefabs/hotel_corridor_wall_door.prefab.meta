@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f9c3637f71a1e0f4282ebd151e0e1c1e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Prefabs/hotel_corridor_wall_door.prefab
+  uploadId: 431881

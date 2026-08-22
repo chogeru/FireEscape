@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 40a3ada66ac07ab409b99b803f41993e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Meshes/Materials/hotel_floor02_1.mat
+  uploadId: 431881

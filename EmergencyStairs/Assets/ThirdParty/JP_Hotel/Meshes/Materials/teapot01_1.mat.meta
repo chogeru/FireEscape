@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 900d8e7f025c2454594ede308c80bc56
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Meshes/Materials/teapot01_1.mat
+  uploadId: 431881

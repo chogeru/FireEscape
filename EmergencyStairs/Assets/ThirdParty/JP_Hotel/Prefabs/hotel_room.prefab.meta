@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 28b907147a05def4eb12cac266a63401
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Prefabs/hotel_room.prefab
+  uploadId: 431881

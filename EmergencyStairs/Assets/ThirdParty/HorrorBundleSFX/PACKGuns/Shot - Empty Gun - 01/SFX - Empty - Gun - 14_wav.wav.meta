@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 59a660c45264a7648839d75e2d4bf423
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 7
+  defaultSettings:
+    serializedVersion: 2
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+    preloadAudioData: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 231304
+  packageName: Horror Bundle - Sound Effects
+  packageVersion: 10.0
+  assetPath: Assets/HorrorBundleSFX/PACKGuns/Shot - Empty Gun - 01/SFX - Empty -
+    Gun - 14_wav.wav
+  uploadId: 953796

@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: 6fc5a69005461284eae05601b3509b35
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: elevator_button_1
+    100002: elevator_button_2
+    100004: elevator_button_3
+    100006: elevator_button_4
+    100008: elevator_button_5
+    100010: elevator_button_6
+    100012: elevator_button_7
+    100014: elevator_button_8
+    100016: elevator_button_9
+    100018: elevator_button_B1
+    100020: elevator_button_B2
+    100022: elevator_button_close
+    100024: elevator_button_open
+    100026: elevator_button_prolong
+    100028: elevator_button_R
+    100030: elevator_button_sos
+    100032: //RootNode
+    400000: elevator_button_1
+    400002: elevator_button_2
+    400004: elevator_button_3
+    400006: elevator_button_4
+    400008: elevator_button_5
+    400010: elevator_button_6
+    400012: elevator_button_7
+    400014: elevator_button_8
+    400016: elevator_button_9
+    400018: elevator_button_B1
+    400020: elevator_button_B2
+    400022: elevator_button_close
+    400024: elevator_button_open
+    400026: elevator_button_prolong
+    400028: elevator_button_R
+    400030: elevator_button_sos
+    400032: //RootNode
+    2100000: elevator_panel01_1
+    2300000: elevator_button_1
+    2300002: elevator_button_2
+    2300004: elevator_button_3
+    2300006: elevator_button_4
+    2300008: elevator_button_5
+    2300010: elevator_button_6
+    2300012: elevator_button_7
+    2300014: elevator_button_8
+    2300016: elevator_button_9
+    2300018: elevator_button_B1
+    2300020: elevator_button_B2
+    2300022: elevator_button_close
+    2300024: elevator_button_open
+    2300026: elevator_button_prolong
+    2300028: elevator_button_R
+    2300030: elevator_button_sos
+    3300000: elevator_button_1
+    3300002: elevator_button_2
+    3300004: elevator_button_3
+    3300006: elevator_button_4
+    3300008: elevator_button_5
+    3300010: elevator_button_6
+    3300012: elevator_button_7
+    3300014: elevator_button_8
+    3300016: elevator_button_9
+    3300018: elevator_button_B1
+    3300020: elevator_button_B2
+    3300022: elevator_button_close
+    3300024: elevator_button_open
+    3300026: elevator_button_prolong
+    3300028: elevator_button_R
+    3300030: elevator_button_sos
+    4300000: elevator_button_sos
+    4300002: elevator_button_close
+    4300004: elevator_button_open
+    4300006: elevator_button_R
+    4300008: elevator_button_prolong
+    4300010: elevator_button_1
+    4300012: elevator_button_2
+    4300014: elevator_button_3
+    4300016: elevator_button_4
+    4300018: elevator_button_5
+    4300020: elevator_button_6
+    4300022: elevator_button_7
+    4300024: elevator_button_8
+    4300026: elevator_button_9
+    4300028: elevator_button_B1
+    4300030: elevator_button_B2
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevator_panel01_1
+    second: {fileID: 2100000, guid: 69ebaf91289a0f04fad97508dc76c722, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 12
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Meshes/elevator_buttons.fbx
+  uploadId: 431881

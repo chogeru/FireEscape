@@ -1,0 +1,10 @@
+--------------------
+Third-Party Notice:
+--------------------
+
+This asset is governed by the Asset Store EULA;
+however, the following components are governed by the licenses indicated below:
+
+HDRI Haven/kiara_1_dawn_4k
+CC0 / Photo by Greg Zaal
+https://hdrihaven.com/hdri/?h=kiara_1_dawn

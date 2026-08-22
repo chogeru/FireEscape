@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d7eed8ef384a2874facfad5fc62cf20c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Prefabs/elevator_button_up-down_EMI.prefab
+  uploadId: 431881

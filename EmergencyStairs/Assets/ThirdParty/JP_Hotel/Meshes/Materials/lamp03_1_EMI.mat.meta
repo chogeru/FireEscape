@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 37d264ca499c4a5428653fdb85f588f0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Meshes/Materials/lamp03_1_EMI.mat
+  uploadId: 431881

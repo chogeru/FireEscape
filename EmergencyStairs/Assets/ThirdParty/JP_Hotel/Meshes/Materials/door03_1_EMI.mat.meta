@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3361a9cb4f5d20b4da14f29d2901d220
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Meshes/Materials/door03_1_EMI.mat
+  uploadId: 431881

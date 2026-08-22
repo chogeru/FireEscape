@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e73701f223ad65d4eb74cbc053ac5b82
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 261944
+  packageName: News Studio - Environment for VR, News Reports or Backdrops
+  packageVersion: 1.0
+  assetPath: Assets/Nimikko_Mall/MallSettings.lighting
+  uploadId: 604095

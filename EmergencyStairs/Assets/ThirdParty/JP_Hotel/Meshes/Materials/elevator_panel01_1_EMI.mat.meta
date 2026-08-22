@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1e1b155884af08443b83103eb53afd56
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Meshes/Materials/elevator_panel01_1_EMI.mat
+  uploadId: 431881
