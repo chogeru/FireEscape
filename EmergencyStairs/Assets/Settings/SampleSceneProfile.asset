@@ -106,7 +106,7 @@ MonoBehaviour:
     m_Value: 0
   tonemap:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 2
   tonemapAGXGamma:
     m_OverrideState: 0
     m_Value: 2.5
@@ -121,13 +121,13 @@ MonoBehaviour:
     m_Value: 1
   saturate:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.82
   brightness:
     m_OverrideState: 1
-    m_Value: 1.05
+    m_Value: 0.82
   contrast:
     m_OverrideState: 1
-    m_Value: 1.02
+    m_Value: 1.08
   daltonize:
     m_OverrideState: 0
     m_Value: 0
@@ -135,14 +135,14 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   tintColor:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 0}
+    m_OverrideState: 1
+    m_Value: {r: 0.82, g: 0.88, b: 1.02, a: 0.12}
   colorTempBlend:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.35
   colorTemp:
-    m_OverrideState: 0
-    m_Value: 6550
+    m_OverrideState: 1
+    m_Value: 4200
   lut:
     m_OverrideState: 0
     m_Value: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
     dimension: 1
   bloomIntensity:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0.3
   bloomThreshold:
     m_OverrideState: 1
     m_Value: 0.75
@@ -169,8 +169,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1000
   bloomTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 1, a: 0}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.92, b: 0.78, a: 1}
   bloomDepthAtten:
     m_OverrideState: 0
     m_Value: 0
@@ -616,13 +616,13 @@ MonoBehaviour:
     m_Value: 0.15
   vignettingOuterRing:
     m_OverrideState: 1
-    m_Value: 0.325
+    m_Value: 0.28
   vignettingInnerRing:
     m_OverrideState: 1
-    m_Value: 0.925
+    m_Value: 0.85
   vignettingFade:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.6
   vignettingCircularShape:
     m_OverrideState: 0
     m_Value: 0
@@ -761,10 +761,10 @@ MonoBehaviour:
     dimension: 1
   filmGrainEnabled:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   filmGrainIntensity:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.16
   filmGrainResolution:
     m_OverrideState: 0
     m_Value: 0.85
@@ -844,7 +844,7 @@ MonoBehaviour:
     m_Value: 0
   reflectionsMultiplier:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.5
   showInSceneView:
     m_OverrideState: 0
     m_Value: 1
@@ -900,7 +900,7 @@ MonoBehaviour:
     m_Value: 1
   smoothnessThreshold:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.15
   reflectionsMinIntensity:
     m_OverrideState: 0
     m_Value: 0
@@ -972,8 +972,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   fresnel:
-    m_OverrideState: 0
-    m_Value: 0.75
+    m_OverrideState: 1
+    m_Value: 0.8
   decay:
     m_OverrideState: 0
     m_Value: 2
@@ -1084,7 +1084,7 @@ MonoBehaviour:
     m_Value: 0
   stopNaN:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   stencilCheck:
     m_OverrideState: 0
     m_Value: 0
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   active: 1
   effectIntensity:
     m_OverrideState: 1
-    m_Value: 0.147
+    m_Value: 0.22
   distanceFade:
     m_OverrideState: 1
     m_Value: 0
