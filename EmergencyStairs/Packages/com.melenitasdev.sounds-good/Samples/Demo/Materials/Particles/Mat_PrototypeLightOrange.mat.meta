@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0739fee5f7fb3ee49909362d46ddf53f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 266130
+  packageName: Sounds Good 2.0 - Easy & Optimized Audio Manager
+  packageVersion: 2.1.1
+  assetPath: Packages/com.melenitasdev.sounds-good/Samples/Demo/Materials/Particles/Mat_PrototypeLightOrange.mat
+  uploadId: 825056

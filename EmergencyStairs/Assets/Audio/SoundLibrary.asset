@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0cd50d2b616ae49bb4668c6f261bf9, type: 3}
+  m_Name: SoundLibrary
+  m_EditorClassIdentifier: 
+  bgmEntries:
+  - id: BGM_Corridor
+    clip: {fileID: 8300000, guid: bb8347339c95e0745ab4b8bb434c934d, type: 3}
+    volume: 0.5
+    pitch: 1
+    is3D: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
+    rolloffMode: 0
+  seEntries:
+  - id: Footstep_Wood
+    clip: {fileID: 8300000, guid: 673430980f63dbe438d7b74c3927ebf6, type: 3}
+    volume: 0.8
+    pitch: 1
+    is3D: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 15
+    rolloffMode: 0
+  - id: Ambient_Creak
+    clip: {fileID: 8300000, guid: 6b67452df46e8f94ab56f93e050a201a, type: 3}
+    volume: 0.7
+    pitch: 1
+    is3D: 1
+    spatialBlend: 1
+    minDistance: 2
+    maxDistance: 25
+    rolloffMode: 0
+  - id: Footstep_Concrete
+    clip: {fileID: 8300000, guid: 673430980f63dbe438d7b74c3927ebf6, type: 3}
+    volume: 0.6
+    pitch: 1.15
+    is3D: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 15
+    rolloffMode: 0
