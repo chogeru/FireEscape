@@ -1,0 +1,35 @@
+# Unity generated
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+MemoryCaptures/
+
+# Visual Studio / Rider cache
+.vs/
+.vsconfig
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large installer packages (kept locally, not pushed)
+Assets/ThirdParty/Horror_Prison/HDRP_Horror_Prison.unitypackage
+Assets/ThirdParty/Horror_Prison/HDRP_Horror_Prison.unitypackage.meta
+Assets/ThirdParty/Horror_Prison/URP_Horror_Prison.unitypackage
+Assets/ThirdParty/Horror_Prison/URP_Horror_Prison.unitypackage.meta
+Assets/ThirdParty/Hivemind/HorrorHospital/BUILTIN/HorrorHospital_BuiltIN.unitypackage
+Assets/ThirdParty/Hivemind/HorrorHospital/BUILTIN/HorrorHospital_BuiltIN.unitypackage.meta
+Assets/ThirdParty/Hivemind/HorrorHospital/URP/HorrorHospital_URP.unitypackage
+Assets/ThirdParty/Hivemind/HorrorHospital/URP/HorrorHospital_URP.unitypackage.meta

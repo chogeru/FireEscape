@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7dc29d982131c754bb54a590090ab1cd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 193482
+  packageName: Japanese Hotel Room
+  packageVersion: 1.0
+  assetPath: Assets/JP_Hotel/Scenes/Hotel/LightingData.asset
+  uploadId: 431881
