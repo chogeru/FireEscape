@@ -7,8 +7,14 @@ using UnityEngine;
 public partial class AudioManager
 {
     [FoldoutGroup("Sound Data"), Tooltip("設定するとStart()で自動的にBGM再生を開始する(未設定なら何もしない)。")]
-    [SerializeField, ValueDropdown("SoundLibraryIds.BgmIds")] private string startBgmId;
+    [SerializeField, ValueDropdown(nameof(GetBgmIdOptions))] private string startBgmId;
     [FoldoutGroup("Sound Data"), SerializeField] private float startBgmFadeTime = 2f;
+
+#if UNITY_EDITOR
+    private static System.Collections.Generic.IEnumerable<string> GetBgmIdOptions() => SoundLibraryIds.BgmIds();
+#else
+    private static System.Collections.Generic.IEnumerable<string> GetBgmIdOptions() => System.Linq.Enumerable.Empty<string>();
+#endif
 
     [FoldoutGroup("Sources"), SerializeField] private AudioSource bgmSource;
 

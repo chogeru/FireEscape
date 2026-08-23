@@ -14,8 +14,14 @@ public class AmbientOneShotPlayer : MonoBehaviour
     [Serializable]
     public class AmbientSound
     {
-        [ValueDropdown("SoundLibraryIds.SeIds")] public string seId;
+        [ValueDropdown(nameof(GetSeIdOptions))] public string seId;
         [Range(0f, 1f)] public float weight = 1f;
+
+#if UNITY_EDITOR
+        private static IEnumerable<string> GetSeIdOptions() => SoundLibraryIds.SeIds();
+#else
+        private static IEnumerable<string> GetSeIdOptions() => System.Linq.Enumerable.Empty<string>();
+#endif
     }
 
     [SerializeField] private List<AmbientSound> sounds = new();
