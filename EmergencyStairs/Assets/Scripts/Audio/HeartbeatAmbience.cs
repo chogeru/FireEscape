@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 /// <summary>
@@ -7,12 +8,12 @@ using UnityEngine;
 /// </summary>
 public class HeartbeatAmbience : MonoBehaviour
 {
-    [SerializeField] private AudioSource heartbeatSource;
-    [SerializeField] private AudioSource breathingSource;
+    [FoldoutGroup("Sources"), SerializeField] private AudioSource heartbeatSource;
+    [FoldoutGroup("Sources"), SerializeField] private AudioSource breathingSource;
 
-    [SerializeField] private AnimationCurve heartbeatVolumeByFear = AnimationCurve.Linear(0f, 0f, 1f, 1f);
-    [SerializeField] private AnimationCurve heartbeatPitchByFear = AnimationCurve.Linear(0f, 0.9f, 1f, 1.4f);
-    [SerializeField] private AnimationCurve breathingVolumeByFear = AnimationCurve.Linear(0f, 0.1f, 1f, 0.8f);
+    [FoldoutGroup("Curves"), SerializeField] private AnimationCurve heartbeatVolumeByFear = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+    [FoldoutGroup("Curves"), SerializeField] private AnimationCurve heartbeatPitchByFear = AnimationCurve.Linear(0f, 0.9f, 1f, 1.4f);
+    [FoldoutGroup("Curves"), SerializeField] private AnimationCurve breathingVolumeByFear = AnimationCurve.Linear(0f, 0.1f, 1f, 0.8f);
 
     [SerializeField] private float smoothTime = 1.5f;
 
@@ -22,8 +23,17 @@ public class HeartbeatAmbience : MonoBehaviour
 
     public float FearLevel => currentFear;
 
+    [ShowInInspector, ReadOnly, ProgressBar(0, 1)]
+    private float FearLevelDebug => currentFear;
+
     public void SetFearLevel(float value) => targetFear = Mathf.Clamp01(value);
     public void AddFear(float delta) => targetFear = Mathf.Clamp01(targetFear + delta);
+
+    [Button("Fear -> Max"), PropertyOrder(-1)]
+    private void DebugSetFearMax() => SetFearLevel(1f);
+
+    [Button("Fear -> Zero"), PropertyOrder(-1)]
+    private void DebugSetFearZero() => SetFearLevel(0f);
 
     private void Awake()
     {

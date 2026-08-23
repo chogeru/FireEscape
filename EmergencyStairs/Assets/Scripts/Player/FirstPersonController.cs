@@ -5,20 +5,28 @@ using UnityEngine.InputSystem;
 public class FirstPersonController : MonoBehaviour
 {
     [Header("Move")]
-    [SerializeField] private float walkSpeed = 4f;
-    [SerializeField] private float runSpeed = 7f;
+    [SerializeField] private float walkSpeed = 2.6f;
+    [SerializeField] private float runSpeed = 4.5f;
     [SerializeField] private float jumpHeight = 1.2f;
     [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float moveSmoothTime = 0.25f;
 
     [Header("Look")]
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float mouseSensitivity = 2f;
     [SerializeField] private float minPitch = -85f;
     [SerializeField] private float maxPitch = 85f;
+    [SerializeField] private float lookSmoothTime = 0.08f;
 
     private CharacterController controller;
     private Vector3 velocity;
     private float pitch;
+
+    private Vector2 currentMoveInput;
+    private Vector2 moveInputVelocity;
+
+    private Vector2 smoothedLookDelta;
+    private Vector2 lookDeltaVelocity;
 
     private void Awake()
     {
@@ -43,7 +51,9 @@ public class FirstPersonController : MonoBehaviour
         var mouse = Mouse.current;
         if (mouse == null) return;
 
-        Vector2 delta = mouse.delta.ReadValue() * mouseSensitivity * 0.1f;
+        Vector2 rawDelta = mouse.delta.ReadValue() * mouseSensitivity * 0.1f;
+        smoothedLookDelta = Vector2.SmoothDamp(smoothedLookDelta, rawDelta, ref lookDeltaVelocity, lookSmoothTime);
+        Vector2 delta = smoothedLookDelta;
 
         transform.Rotate(Vector3.up, delta.x);
 
@@ -68,8 +78,10 @@ public class FirstPersonController : MonoBehaviour
         }
         input = Vector2.ClampMagnitude(input, 1f);
 
+        currentMoveInput = Vector2.SmoothDamp(currentMoveInput, input, ref moveInputVelocity, moveSmoothTime);
+
         float speed = running ? runSpeed : walkSpeed;
-        Vector3 move = (transform.right * input.x + transform.forward * input.y) * speed;
+        Vector3 move = (transform.right * currentMoveInput.x + transform.forward * currentMoveInput.y) * speed;
 
         if (controller.isGrounded)
         {

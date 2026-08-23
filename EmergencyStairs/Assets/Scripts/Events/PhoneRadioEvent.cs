@@ -1,6 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,25 +28,22 @@ public class PhoneRadioEvent : MonoBehaviour
     [SerializeField] private UnityEvent onEventStarted;
     [SerializeField] private UnityEvent onEventFinished;
 
-    private Coroutine playRoutine;
+    private CancellationTokenSource playCts;
     private AudioSource activeSource;
 
     public void Play()
     {
-        if (playRoutine != null)
-        {
-            StopCoroutine(playRoutine);
-            if (activeSource != null)
-                activeSource.Stop();
-        }
-        playRoutine = StartCoroutine(PlayRoutine());
+        playCts?.Cancel();
+        playCts?.Dispose();
+        playCts = new CancellationTokenSource();
+        PlayAsync(playCts.Token).Forget();
     }
 
     public void Stop()
     {
-        if (playRoutine != null)
-            StopCoroutine(playRoutine);
-        playRoutine = null;
+        playCts?.Cancel();
+        playCts?.Dispose();
+        playCts = null;
 
         if (activeSource != null)
             activeSource.Stop();
@@ -57,10 +55,9 @@ public class PhoneRadioEvent : MonoBehaviour
         SubtitleUI.Instance?.Hide();
     }
 
-    private IEnumerator PlayRoutine()
+    private async UniTaskVoid PlayAsync(CancellationToken ct)
     {
-        if (AudioManager.Instance == null)
-            yield break;
+        if (AudioManager.Instance == null) return;
 
         if (requestUIMode)
             GameInputManager.Instance?.RequestUIMode(this);
@@ -75,16 +72,24 @@ public class PhoneRadioEvent : MonoBehaviour
         float elapsed = 0f;
         int index = 0;
 
-        while (elapsed < clipLength)
+        try
         {
-            while (index < subtitles.Count && elapsed >= subtitles[index].startTime)
+            while (elapsed < clipLength)
             {
-                SubtitleUI.Instance?.Show(subtitles[index].text);
-                index++;
-            }
+                while (index < subtitles.Count && elapsed >= subtitles[index].startTime)
+                {
+                    SubtitleUI.Instance?.Show(subtitles[index].text);
+                    index++;
+                }
 
-            elapsed += Time.deltaTime;
-            yield return null;
+                elapsed += Time.deltaTime;
+                await UniTask.Yield(PlayerLoopTiming.Update, ct);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // Stop()側で後始末済みなので、ここでは何もせず終了する
+            return;
         }
 
         SubtitleUI.Instance?.Hide();
@@ -93,6 +98,11 @@ public class PhoneRadioEvent : MonoBehaviour
             GameInputManager.Instance?.ReleaseUIMode(this);
 
         onEventFinished?.Invoke();
-        playRoutine = null;
+    }
+
+    private void OnDestroy()
+    {
+        playCts?.Cancel();
+        playCts?.Dispose();
     }
 }

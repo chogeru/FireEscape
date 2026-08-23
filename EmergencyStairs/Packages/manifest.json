@@ -1,6 +1,25 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.cysharp.r3",
+        "com.cysharp.unitask",
+        "org.nuget",
+        "jp.hadashikick.vcontainer"
+      ]
+    }
+  ],
   "dependencies": {
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
+    "com.cysharp.r3": "1.3.1",
+    "com.cysharp.unitask": "2.5.11",
+    "org.nuget.r3": "1.3.1",
+    "org.nuget.microsoft.bcl.timeprovider": "10.0.11",
+    "jp.hadashikick.vcontainer": "1.19.0",
+    "com.unity.cinemachine": "3.1.7",
+    "com.unity.addressables": "4.0.1",
     "com.unity.ai.navigation": "2.0.4",
     "com.unity.collab-proxy": "2.13.6",
     "com.unity.ide.rider": "3.0.31",

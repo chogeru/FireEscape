@@ -1,4 +1,4 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +12,7 @@ public enum OpenMode
 /// ドア(ヒンジ回転)・引き出し(スライド)の両方をカバーする開閉インタラクタブル。
 /// 開いた状態は「初期姿勢からのオフセット」で指定するため、シーン上の初期回転・位置が
 /// そのまま「閉」の基準になる(角度のラップアラウンドにも強いQuaternion補間)。
+/// アニメーションはDOTweenが担当し、連打による再トグルはDOKill()で安全に割り込む。
 /// LoopManagerのフラグと連携して「このフラグが立つまで施錠」といった演出に使える。
 /// </summary>
 public class OpenableInteractable : InteractableBase
@@ -19,6 +20,7 @@ public class OpenableInteractable : InteractableBase
     [Header("Open Mode")]
     [SerializeField] private OpenMode mode = OpenMode.RotateHinge;
     [SerializeField] private float duration = 0.6f;
+    [SerializeField] private Ease ease = Ease.InOutSine;
 
     [Header("Rotate (Door) - 閉状態からの相対回転")]
     [SerializeField] private Vector3 openEulerOffset = new(0f, 90f, 0f);
@@ -35,7 +37,7 @@ public class OpenableInteractable : InteractableBase
     private bool isOpen;
     private Vector3 closedLocalPos;
     private Quaternion closedLocalRot;
-    private Coroutine moveRoutine;
+    private Tween moveTween;
 
     private void Reset()
     {
@@ -47,6 +49,11 @@ public class OpenableInteractable : InteractableBase
     {
         closedLocalPos = transform.localPosition;
         closedLocalRot = transform.localRotation;
+    }
+
+    private void OnDestroy()
+    {
+        moveTween?.Kill();
     }
 
     public override void Interact(GameObject interactor)
@@ -73,36 +80,17 @@ public class OpenableInteractable : InteractableBase
     private void Toggle()
     {
         isOpen = !isOpen;
-        if (moveRoutine != null)
-            StopCoroutine(moveRoutine);
-        moveRoutine = StartCoroutine(MoveRoutine());
-    }
-
-    private IEnumerator MoveRoutine()
-    {
-        float t = 0f;
-        Quaternion startRot = transform.localRotation;
-        Vector3 startPos = transform.localPosition;
-
-        Quaternion targetRot = isOpen ? closedLocalRot * Quaternion.Euler(openEulerOffset) : closedLocalRot;
-        Vector3 targetPos = isOpen ? closedLocalPos + openLocalOffset : closedLocalPos;
-
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            float f = Mathf.SmoothStep(0f, 1f, t / duration);
-
-            if (mode == OpenMode.RotateHinge)
-                transform.localRotation = Quaternion.Slerp(startRot, targetRot, f);
-            else
-                transform.localPosition = Vector3.Lerp(startPos, targetPos, f);
-
-            yield return null;
-        }
+        moveTween?.Kill();
 
         if (mode == OpenMode.RotateHinge)
-            transform.localRotation = targetRot;
+        {
+            Quaternion targetRot = isOpen ? closedLocalRot * Quaternion.Euler(openEulerOffset) : closedLocalRot;
+            moveTween = transform.DOLocalRotateQuaternion(targetRot, duration).SetEase(ease);
+        }
         else
-            transform.localPosition = targetPos;
+        {
+            Vector3 targetPos = isOpen ? closedLocalPos + openLocalOffset : closedLocalPos;
+            moveTween = transform.DOLocalMove(targetPos, duration).SetEase(ease);
+        }
     }
 }

@@ -1,35 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using R3;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class AudioManager : MonoSingleton<AudioManager>
 {
-    [Header("Sound Data")]
-    [SerializeField] private SoundLibrary library;
-    [Tooltip("設定するとStart()で自動的にBGM再生を開始する(未設定なら何もしない)。")]
+    [FoldoutGroup("Sound Data"), SerializeField, Required] private SoundLibrary library;
+    [FoldoutGroup("Sound Data"), Tooltip("設定するとStart()で自動的にBGM再生を開始する(未設定なら何もしない)。")]
     [SerializeField] private string startBgmId;
-    [SerializeField] private float startBgmFadeTime = 2f;
+    [FoldoutGroup("Sound Data"), SerializeField] private float startBgmFadeTime = 2f;
 
-    [Header("Sources")]
-    [SerializeField] private AudioSource bgmSource;
-    [SerializeField] private AudioSource seSource2D;
+    [FoldoutGroup("Sources"), SerializeField] private AudioSource bgmSource;
+    [FoldoutGroup("Sources"), SerializeField] private AudioSource seSource2D;
 
-    [Header("3D SE Pool")]
-    [SerializeField] private int sePoolSize = 8;
+    [FoldoutGroup("3D SE Pool"), SerializeField] private int sePoolSize = 8;
 
-    [Header("Volume")]
-    [SerializeField, Range(0f, 1f)] private float bgmVolume = 1f;
-    [SerializeField, Range(0f, 1f)] private float seVolume = 1f;
+    [FoldoutGroup("Volume"), SerializeField, Range(0f, 1f)] private float bgmVolume = 1f;
+    [FoldoutGroup("Volume"), SerializeField, Range(0f, 1f)] private float seVolume = 1f;
 
-    [Header("Occlusion (Sounds Good style)")]
-    [Tooltip("壁やドアなど障害物越しの3D SEを自動でこもらせる。")]
+    [FoldoutGroup("Occlusion (Sounds Good style)"), Tooltip("壁やドアなど障害物越しの3D SEを自動でこもらせる。")]
     [SerializeField] private bool enableOcclusion = true;
-    [SerializeField] private LayerMask occlusionLayers = ~0;
-    [SerializeField] private float occlusionMinCutoff = 500f;
-    [SerializeField] private float occlusionMaxCutoff = 22000f;
-    [SerializeField, Range(0f, 1f)] private float occlusionMinVolumeMultiplier = 0.35f;
-    [SerializeField] private float occlusionCheckInterval = 0.15f;
-    [SerializeField] private float occlusionLerpSpeed = 6f;
+    [FoldoutGroup("Occlusion (Sounds Good style)"), SerializeField] private LayerMask occlusionLayers = ~0;
+    [FoldoutGroup("Occlusion (Sounds Good style)"), SerializeField] private float occlusionMinCutoff = 500f;
+    [FoldoutGroup("Occlusion (Sounds Good style)"), SerializeField] private float occlusionMaxCutoff = 22000f;
+    [FoldoutGroup("Occlusion (Sounds Good style)"), SerializeField, Range(0f, 1f)] private float occlusionMinVolumeMultiplier = 0.35f;
+    [FoldoutGroup("Occlusion (Sounds Good style)"), SerializeField] private float occlusionCheckInterval = 0.15f;
+    [FoldoutGroup("Occlusion (Sounds Good style)"), SerializeField] private float occlusionLerpSpeed = 6f;
+
+    /// <summary>現在のBGM音量(0-1)。値の変更を購読すれば、オプション画面のスライダー等をリアクティブに同期できる。</summary>
+    public ReactiveProperty<float> BgmVolume { get; } = new(1f);
+
+    /// <summary>現在のSE音量(0-1)。用途はBgmVolumeと同様。</summary>
+    public ReactiveProperty<float> SeVolume { get; } = new(1f);
+
+    [FoldoutGroup("Volume"), ShowInInspector, ReadOnly, ProgressBar(0, 1), LabelText("Bgm Volume (live)")]
+    private float BgmVolumeDisplay => BgmVolume.Value;
+
+    [FoldoutGroup("Volume"), ShowInInspector, ReadOnly, ProgressBar(0, 1), LabelText("Se Volume (live)")]
+    private float SeVolumeDisplay => SeVolume.Value;
 
     private string currentBgmId;
     private Coroutine fadeRoutine;
@@ -48,6 +57,11 @@ public class AudioManager : MonoSingleton<AudioManager>
     protected override void Awake()
     {
         base.Awake();
+
+        if (PlayerPrefs.HasKey(BgmVolumePrefKey)) bgmVolume = PlayerPrefs.GetFloat(BgmVolumePrefKey);
+        if (PlayerPrefs.HasKey(SeVolumePrefKey)) seVolume = PlayerPrefs.GetFloat(SeVolumePrefKey);
+        BgmVolume.Value = bgmVolume;
+        SeVolume.Value = seVolume;
 
         if (bgmSource == null)
         {
@@ -91,6 +105,13 @@ public class AudioManager : MonoSingleton<AudioManager>
     {
         if (!string.IsNullOrEmpty(startBgmId))
             PlayBGM(startBgmId, true, startBgmFadeTime);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        BgmVolume.Dispose();
+        SeVolume.Dispose();
     }
 
     private void LateUpdate()
@@ -298,15 +319,24 @@ public class AudioManager : MonoSingleton<AudioManager>
         return true;
     }
 
+    private const string BgmVolumePrefKey = "AudioManager.BgmVolume";
+    private const string SeVolumePrefKey = "AudioManager.SeVolume";
+
     public void SetBGMVolume(float volume)
     {
         bgmVolume = Mathf.Clamp01(volume);
         bgmSource.volume = bgmVolume;
+        BgmVolume.Value = bgmVolume;
+        PlayerPrefs.SetFloat(BgmVolumePrefKey, bgmVolume);
+        PlayerPrefs.Save();
     }
 
     public void SetSEVolume(float volume)
     {
         seVolume = Mathf.Clamp01(volume);
+        SeVolume.Value = seVolume;
+        PlayerPrefs.SetFloat(SeVolumePrefKey, seVolume);
+        PlayerPrefs.Save();
     }
 
     private IEnumerator FadeToNewBGM(SoundEntry entry, bool loop, float fadeTime)

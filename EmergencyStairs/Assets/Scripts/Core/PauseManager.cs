@@ -1,16 +1,27 @@
-using System;
+using R3;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
 /// Time.timeScaleによるポーズ管理。GameInputManagerにUIモードを要求するだけで
 /// カーソル表示・ゲームプレイ入力停止が自動的に連動する(仕組みはPhoneRadioEvent等と共通)。
-/// 他システムはOnPauseChangedを購読するだけで、ポーズ中の挙動を自由に実装できる。
+/// 他システムはIsPausedRP(ReactiveProperty)を購読するだけで、ポーズ中の挙動を自由に実装できる。
+/// 購読した瞬間に現在値を受け取れるので、後から生成されたUI等も状態の取りこぼしがない。
 /// </summary>
 public class PauseManager : MonoSingleton<PauseManager>
 {
-    public bool IsPaused { get; private set; }
-    public event Action<bool> OnPauseChanged;
+    public ReactiveProperty<bool> IsPausedRP { get; } = new(false);
+
+    public bool IsPaused => IsPausedRP.Value;
+
+    [ShowInInspector, ReadOnly] private bool IsPausedDebug => IsPaused;
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        IsPausedRP.Dispose();
+    }
 
     private void Update()
     {
@@ -29,7 +40,6 @@ public class PauseManager : MonoSingleton<PauseManager>
     public void SetPaused(bool paused)
     {
         if (IsPaused == paused) return;
-        IsPaused = paused;
 
         Time.timeScale = paused ? 0f : 1f;
 
@@ -38,6 +48,6 @@ public class PauseManager : MonoSingleton<PauseManager>
         else
             GameInputManager.Instance.ReleaseUIMode(this);
 
-        OnPauseChanged?.Invoke(paused);
+        IsPausedRP.Value = paused;
     }
 }

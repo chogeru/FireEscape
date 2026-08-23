@@ -1,6 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
@@ -21,16 +22,29 @@ public class AmbientOneShotPlayer : MonoBehaviour
     [SerializeField] private float maxInterval = 25f;
     [SerializeField] private float radius = 5f;
 
+    private CancellationTokenSource loopCts;
+
     private void OnEnable()
     {
-        StartCoroutine(PlayLoop());
+        loopCts = new CancellationTokenSource();
+        PlayLoopAsync(loopCts.Token).Forget();
     }
 
-    private IEnumerator PlayLoop()
+    private void OnDisable()
     {
-        while (true)
+        loopCts?.Cancel();
+        loopCts?.Dispose();
+        loopCts = null;
+    }
+
+    private async UniTaskVoid PlayLoopAsync(CancellationToken ct)
+    {
+        while (!ct.IsCancellationRequested)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(minInterval, maxInterval));
+            float wait = UnityEngine.Random.Range(minInterval, maxInterval);
+            bool canceled = await UniTask.Delay(TimeSpan.FromSeconds(wait), cancellationToken: ct).SuppressCancellationThrow();
+            if (canceled) return;
+
             PlayRandom();
         }
     }

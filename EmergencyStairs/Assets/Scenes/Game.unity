@@ -1645,10 +1645,12 @@ MonoBehaviour:
   runSpeed: 7
   jumpHeight: 1.2
   gravity: -9.81
+  moveSmoothTime: 0.25
   playerCamera: {fileID: 0}
   mouseSensitivity: 2
   minPitch: -85
   maxPitch: 85
+  lookSmoothTime: 0.08
 --- !u!143 &676217903
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4686,6 +4688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1147225155}
   - component: {fileID: 1147225156}
+  - component: {fileID: 1147225157}
   m_Layer: 0
   m_Name: GameInputManager
   m_TagString: Untagged
@@ -4718,6 +4721,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0521b5d3255e89c4884b9b6c7d685561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1147225157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147225154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b37f859dfad3a4ba743b8b57bb5bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1169583634
@@ -6747,6 +6762,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1169583635}
     m_Modifications:
+    - target: {fileID: 1474791499354392719, guid: f817a2af8b205bb45a1869482ebf195b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1474791499354392719, guid: f817a2af8b205bb45a1869482ebf195b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647

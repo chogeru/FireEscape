@@ -1,3 +1,5 @@
+using System;
+using R3;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,7 +7,8 @@ using UnityEngine.Events;
 /// プレイヤーのカメラに付ける注視インタラクションシステム。
 /// キー入力は使わず、対象を一定時間見つめると自動的にIInteractable.Interact()が発火する。
 /// (場所ベースのイベントはTriggerEventZoneを使う)
-/// GameInputManagerがゲームプレイ入力を停止している間(ポーズ中・電話イベント中等)は判定自体を止める。
+/// GameInputManager.GameplayInputEnabledを購読し、ゲームプレイ入力が停止している間
+/// (ポーズ中・電話イベント中等)は毎フレームのポーリングなしで判定自体を止める。
 /// </summary>
 public class Interactor : MonoBehaviour
 {
@@ -24,6 +27,9 @@ public class Interactor : MonoBehaviour
     private float gazeTimer;
     private bool hasTriggeredCurrent;
 
+    private bool gameplayInputEnabled = true;
+    private IDisposable gameplayInputSubscription;
+
     private void Awake()
     {
         if (viewCamera == null)
@@ -32,14 +38,27 @@ public class Interactor : MonoBehaviour
             ignoreRoot = transform.root;
     }
 
+    private void OnEnable()
+    {
+        if (GameInputManager.Instance != null)
+            gameplayInputSubscription = GameInputManager.Instance.GameplayInputEnabled.Subscribe(enabled => OnGameplayInputEnabledChanged(enabled));
+    }
+
+    private void OnDisable()
+    {
+        gameplayInputSubscription?.Dispose();
+        gameplayInputSubscription = null;
+    }
+
+    private void OnGameplayInputEnabledChanged(bool enabled)
+    {
+        gameplayInputEnabled = enabled;
+        if (!enabled) ClearFocus();
+    }
+
     private void Update()
     {
-        bool gameplayEnabled = GameInputManager.Instance == null || GameInputManager.Instance.IsGameplayInputEnabled;
-        if (!gameplayEnabled)
-        {
-            ClearFocus();
-            return;
-        }
+        if (!gameplayInputEnabled) return;
 
         UpdateFocus();
         UpdateGazeTrigger();
