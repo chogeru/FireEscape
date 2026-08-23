@@ -1822,23 +1822,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53db7aebcc12b374aaaeddc1a549529f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  library: {fileID: 11400000, guid: 85d7c82f4afa46f40971b7f71a3ead45, type: 2}
   startBgmId: BGM_Corridor
   startBgmFadeTime: 2
   bgmSource: {fileID: 679471883}
-  seSource2D: {fileID: 0}
-  sePoolSize: 8
   bgmVolume: 1
-  seVolume: 1
+  library: {fileID: 11400000, guid: 85d7c82f4afa46f40971b7f71a3ead45, type: 2}
   enableOcclusion: 1
   occlusionLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   occlusionMinCutoff: 500
   occlusionMaxCutoff: 22000
   occlusionMinVolumeMultiplier: 0.35
   occlusionCheckInterval: 0.15
   occlusionLerpSpeed: 6
+  seSource2D: {fileID: 0}
+  sePoolSize: 8
+  seVolume: 1
 --- !u!82 &679471883
 AudioSource:
   m_ObjectHideFlags: 2
@@ -4378,7 +4378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911017449}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

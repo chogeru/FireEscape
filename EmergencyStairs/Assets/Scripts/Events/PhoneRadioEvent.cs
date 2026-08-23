@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,7 +21,7 @@ public class SubtitleLine
 /// </summary>
 public class PhoneRadioEvent : MonoBehaviour
 {
-    [SerializeField] private string audioSeId;
+    [SerializeField, ValueDropdown("SoundLibraryIds.SeIds")] private string audioSeId;
     [SerializeField] private List<SubtitleLine> subtitles = new();
     [SerializeField] private bool attachToSelf = true;
     [Tooltip("ONにすると再生中カーソルを表示しゲームプレイ入力を止める(GameInputManager経由)。歩きながら聞かせたい場合はOFF")]

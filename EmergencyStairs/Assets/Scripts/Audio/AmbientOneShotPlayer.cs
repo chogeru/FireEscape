@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 /// <summary>
@@ -13,7 +14,7 @@ public class AmbientOneShotPlayer : MonoBehaviour
     [Serializable]
     public class AmbientSound
     {
-        public string seId;
+        [ValueDropdown("SoundLibraryIds.SeIds")] public string seId;
         [Range(0f, 1f)] public float weight = 1f;
     }
 

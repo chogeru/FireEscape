@@ -1,0 +1,22 @@
+{
+    "name": "EmergencyStairs.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "R3.Unity",
+        "UniTask",
+        "UniTask.DOTween",
+        "Demigiant",
+        "VContainer",
+        "Unity.InputSystem",
+        "TransitionsPlus"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

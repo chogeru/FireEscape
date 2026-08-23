@@ -16,6 +16,8 @@ public class GameSceneManager : MonoSingleton<GameSceneManager>, ISceneTransitio
     [SerializeField, Required, Tooltip("遷移演出を個別指定しなかった場合に使うデフォルトのプロファイル")]
     private TransitionProfile defaultTransition;
 
+    [ShowInInspector, ReadOnly] private bool IsTransitioning { get; set; }
+
     public UniTask LoadSceneAsync(SceneReference scene, CancellationToken ct = default)
         => LoadSceneAsync(scene, defaultTransition, ct);
 
@@ -27,6 +29,12 @@ public class GameSceneManager : MonoSingleton<GameSceneManager>, ISceneTransitio
             return;
         }
 
+        if (IsTransitioning)
+        {
+            Debug.LogWarning($"[GameSceneManager] Ignored LoadSceneAsync('{scene.SceneName}') because a transition is already in progress.");
+            return;
+        }
+
         TransitionProfile profile = transition != null ? transition : defaultTransition;
         if (profile == null)
         {
@@ -34,6 +42,19 @@ public class GameSceneManager : MonoSingleton<GameSceneManager>, ISceneTransitio
             return;
         }
 
+        IsTransitioning = true;
+        try
+        {
+            await RunTransitionAsync(scene, profile, ct);
+        }
+        finally
+        {
+            IsTransitioning = false;
+        }
+    }
+
+    private async UniTask RunTransitionAsync(SceneReference scene, TransitionProfile profile, CancellationToken ct)
+    {
         var tcs = new UniTaskCompletionSource();
         TransitionAnimator animator = TransitionAnimator.Start(profile, autoDestroy: true, sceneNameToLoad: scene.SceneName);
 

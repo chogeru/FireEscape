@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -24,6 +25,12 @@ public class SoundLibrary : ScriptableObject
 {
     [SerializeField] private List<SoundEntry> bgmEntries = new();
     [SerializeField] private List<SoundEntry> seEntries = new();
+
+    /// <summary>登録済みBGM IDの一覧(Odinのドロップダウン等、Editorツール向け)。</summary>
+    public IEnumerable<string> BgmIds => bgmEntries.Select(e => e.id);
+
+    /// <summary>登録済みSE IDの一覧(Odinのドロップダウン等、Editorツール向け)。</summary>
+    public IEnumerable<string> SeIds => seEntries.Select(e => e.id);
 
     private Dictionary<string, SoundEntry> bgmLookup;
     private Dictionary<string, SoundEntry> seLookup;
